@@ -47,7 +47,9 @@ To publish the documentation app online, such as to [GitHub Pages](https://pages
 
 ## How it Works
 
-The project makes use of both [Rollup](https://rollupjs.org/) and [WebPack 2](https://webpack.github.io/). Although they are two different bundlers, they can coexist in the same project, sharing the following:
+### Rollup & Webpack
+
+The project makes use of both [Rollup](https://rollupjs.org/) and [WebPack 2](https://webpack.github.io/). Although they are two different bundlers and producting separate ouputs, they can coexist in the same project, sharing the following:
 
 - Package definition [package.json](package.json)
 - Babel configuration [.babelrc](.babelrc)
@@ -61,6 +63,12 @@ And Webpack uses the following:
 
 - Webpack configuration [webpack.config.js](webpack.config.js)
 - Source codes for documentation apps [docs/src](docs/src)
+
+### Dependencies
+
+The library has a peer dependency to Vue 2, expecting the consumer of the library has its own depency to Vue too. 
+
+The same version of Vue 2 is also in dev dependency so that when running `npm install`, it will also get installed.
 
 ## License
 

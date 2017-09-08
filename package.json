@@ -1,7 +1,7 @@
 {
   "name": "mylib",
   "version": "1.0.0",
-  "dependencies": {
+  "peerDependencies": {
     "vue": "^2.4.2"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "rollup-plugin-vue": "^2.4.1",
     "sass-loader": "^6.0.6",
     "serve": "^6.0.6",
+    "vue": "^2.4.2",
     "vue-loader": "^13.0.4",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.4.2",
