@@ -27,19 +27,23 @@ npm run build-docs
 * `dist/mylib.css`
     a regular CSS file that includes all the styles from the library components
 
-`npm run build-docs` buils the documentation app to `docs/dist`. The documation app can be used to not only host the documentation, but also demo the components. It can be used for quick testing during the development of components, as well as published online, such as to [GitHub Pages](https://pages.github.com/) or [Surge](https://surge.sh/). This starter only contains a simple Vue app that make use of the example component in the library.
+`npm run build-docs` buils the documentation app to `docs/dist`. 
 
 ## Get Started
 
-The library has an example component [MyComponent.vue](src/components/MyComponent.vue), and it is exported in [index.js](src/index.js). To add your components, make sure you export them in `index.js` too.
+The library has an example component [MyComponent.vue](src/components/MyComponent.vue), and it is exported in [index.js](src/index.js). The documentation app is a bare-bones Vue app that make use of the example component in the library. 
 
-The library name is `mylib`. To change it, edit the name property in [package.json](package.json). In addition, [webpack.config.js](webpack.config.js) resolves alias `mylib` to `src` folder, so that the documentation app can access the library components like the following. You may also want to change it, but it is optional.
+To develop components with documentation app running, simple run `npm run start` and keep the browser open at [http://localhost:8080](http://localhost:8080). The documentation app in browser will auto reload whenever you made changes to either the library components or the documentation app itself.
+
+To add your own Vue components, add your Vue files under [src](src), and make sure export them in `index.js`. You should use scoped CSS for your Vue components.
+
+To change the library name from the default `mylib`, edit the name property in [package.json](package.json). In addition, [webpack.config.js](webpack.config.js) resolves alias `mylib` to `src` folder, so that the documentation app can access the library components like the following. You may also want to change it, but it is optional.
 
 ```
 import { MyComponent } from 'mylib';
 ```
 
-Simple run `npm run start` and keep the browser open at [http://localhost:8080](http://localhost:8080). The documentation app in browser will auto reload whenever you made changes to either the library components or the documentation app itself.
+To publish the documentation app online, such as to [GitHub Pages](https://pages.github.com/) or [Surge](https://surge.sh/), run `npm run build-docs`, and publish the `docs/dist` folder. 
 
 ## How it Works
 
