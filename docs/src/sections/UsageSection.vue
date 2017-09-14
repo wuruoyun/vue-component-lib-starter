@@ -9,13 +9,18 @@
     </div>
     <p>The
       <code>data</code> of your component may contain:</p>
-    <pre data-lang="javascript"><code class="javascript"><slot name="data"></slot></code></pre>
+    <pre v-prism data-lang="js"><code class="language-javascript"><slot name="data"></slot></code></pre>
   </section>
 </template>
 
 <script>
+import Prism from '../directives/Prism';
+
 export default {
-  props: [ 'name', 'tag' ]
+  props: [ 'name', 'tag' ],
+  directives: {
+    'prism': Prism
+  }
 }
 </script>
 

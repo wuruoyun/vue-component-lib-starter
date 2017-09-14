@@ -1,6 +1,6 @@
 <template>
   <div class="component-a">
-    <p>Component A: {{ msg }}</p>
+    <p>Component A has 'msg' prop: {{ msg }}</p>
   </div>
 </template>
 
