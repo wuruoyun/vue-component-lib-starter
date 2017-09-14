@@ -31,7 +31,7 @@ npm run build-docs
 
 ## Get Started
 
-The library has an example component [MyComponent.vue](src/components/MyComponent.vue), and it is exported in [index.js](src/index.js). The documentation app is a bare-bones Vue app that make use of the example component in the library. 
+The library has two example components [ComponentA.vue](src/components/ComponentA.vue) and [ComponentB.vue](src/components/ComponentB.vue). They are exported in [index.js](src/index.js). The documentation app is a simple Vue app that make use of the example components in the library. You may replace it completely with your own.
 
 To develop components with documentation app running, simple run `npm run start` and keep the browser open at [http://localhost:8080](http://localhost:8080). The documentation app in browser will auto reload whenever you made changes to either the library components or the documentation app itself.
 
@@ -64,11 +64,19 @@ And Webpack uses the following:
 - Webpack configuration [webpack.config.js](webpack.config.js)
 - Source codes for documentation apps [docs/src](docs/src)
 
+As [package.json](package.json) is shared by both library and document app, their dependencies are shared. To make the dependencies clean for the library, if an external library is only used by the documentation app, add them as `devDependencies` instead of `dependencies` or `peerDependencies`.
+
 ### Dependencies
 
 The library has a peer dependency to Vue 2, expecting the consumer of the library has its own depency to Vue too. 
 
 The same version of Vue 2 is also in dev dependency so that when running `npm install`, it will also get installed.
+
+## Extension
+
+### JSX
+
+If you want to use JSX in your component, refer to [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx). You will need to install a few npm modules and configure your Babel to use the `transform-vue-jsx` plugin.
 
 ## License
 

@@ -1,24 +1,23 @@
 <template>
-  <div id="app">
-    <h1>My Vue Components</h1>
-    <my-component></my-component>
-    <hr>
-    <test-component></test-component>
-  </div>
+  <main>
+    <app-sidebar />
+    <section class="content" style="overflow:auto;">
+      <article class="markdown-section">
+        <router-view></router-view>
+        <app-footer />
+      </article>
+    </section>
+  </main>
 </template>
 
 <script>
-import { MyComponent } from 'mylib';
-import TestComponent from './components/TestComponent.vue';
+import SideBar from './sections/SideBar.vue';
+import Footer from './sections/Footer.vue';
 
 export default {
   components: {
-    'my-component': MyComponent,
-    'test-component': TestComponent
+    'app-sidebar': SideBar,
+    'app-footer': Footer
   }
 }
 </script>
-
-<style>
-
-</style>
