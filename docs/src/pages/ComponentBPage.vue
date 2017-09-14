@@ -4,7 +4,12 @@
     <p>The description for Component B goes here.</p>
     <component-b @click="onClick"/>
     <usage-section name="ComponentB" tag="component-b">
-      <span slot="template">&lt;component-b @click="onClick"/&gt;</span>
+      <span slot="template">&lt;component-b @click="onClick"/></span>
+      <span slot="script">methods: {
+  onClick(value) {
+    alert("Component B has value: " + value);
+  }
+}</span>
     </usage-section>
   </div>
 </template>

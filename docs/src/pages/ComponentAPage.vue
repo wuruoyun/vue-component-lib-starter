@@ -4,8 +4,12 @@
     <p>The description for Component A goes here.</p>
     <component-a :msg="msg"/>
     <usage-section name="ComponentA" tag="component-a">
-      <span slot="template">&lt;component-a :msg="msg"/&gt;</span>
-      <span slot="data">msg: 'Greeting'</span>
+      <span slot="template">&lt;component-a :msg="msg"/></span>
+      <span slot="script">data() {
+  return {
+    msg: 'Greeting'
+  }
+}</span>
     </usage-section>
     <props-section :props="props" />
   </div>

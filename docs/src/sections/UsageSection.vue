@@ -1,15 +1,16 @@
 <template>
   <section>
     <h2>Usage</h2>
-    <div>
-      <p>Assuming
-        <code>{{name}}</code> is registered as component
-        <code>{{tag}}</code>, your template may contain: </p>
-      <pre data-lang="html"><code class="html"><slot name="template"></slot></code></pre>
-    </div>
-    <p>The
-      <code>data</code> of your component may contain:</p>
-    <pre v-prism data-lang="js"><code class="language-javascript"><slot name="data"></slot></code></pre>
+
+    <p>Assuming <code>{{name}}</code> is registered as 
+      <code>{{tag}}</code>, the <code>template</code> of your component may contain: </p>
+    <pre v-prism data-lang="html"><code class="language-markup"><slot name="template"></slot></code></pre>
+
+    <template v-if="$slots.script">
+      <p>The <code>script</code> section of your component may contain:</p>
+      <pre v-prism data-lang="js"><code class="language-javascript"><slot name="script"></slot></code></pre>
+    </template>
+
   </section>
 </template>
 
