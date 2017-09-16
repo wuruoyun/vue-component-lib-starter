@@ -9,12 +9,6 @@ const router = new VueRouter({
   routes // short for `routes: routes`
 })
 
-Vue.directive('prism', {
-  bind: function () {
-      console.log(this.expression) // 'foo'
-  }
-});
-
 new Vue({
   el: '#app',
   router,
