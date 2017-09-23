@@ -1,6 +1,6 @@
 # Vue Component Lib Starter
 
-This repo contains a bare-bones example of how to create your own Vue component library. The libray is built by [Rollup](https://rollupjs.org/), while the documentation app is built by [WebPack 2](https://webpack.github.io/). This is following the [recommendation](https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c): "Use webpack for apps, and Rollup for libraries".
+> This repo contains a bare-bones example of how to create your own Vue component library. The libray is built by [Rollup](https://rollupjs.org/), while the documentation app is built by [WebPack 2](https://webpack.github.io/). This is following the [recommendation](https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c): "Use webpack for apps, and Rollup for libraries".
 
 ## Build Setup
 
@@ -31,17 +31,17 @@ npm run build-docs
 
 ## Get Started
 
-The library has two example components [ComponentA.vue](src/components/ComponentA.vue) and [ComponentB.vue](src/components/ComponentB.vue). They are exported in [index.js](src/index.js). The documentation app is a simple Vue app that make use of the example components in the library. You may replace it completely with your own.
+The library has two example components [ComponentA.vue](src/components/ComponentA.vue) and [ComponentB.vue](src/components/ComponentB.vue). They are exported in [index.js](src/index.js). The documentation app is a simple Vue app that make use of the example components in the library. You may replace it completely with your own, such as one uses [vue-markdown-loader](https://github.com/QingWei-Li/vue-markdown-loader).
+
+To change the default library name `mylib`, edit the name property in [package.json](package.json). In addition, [webpack.config.js](webpack.config.js) resolves alias `mylib` to `src` folder, so that the documentation app can access the library components like the following. You may also want to change it, but it is optional.
+
+```
+import { ComponentA } from 'mylib';
+```
 
 To develop components with documentation app running, simple run `npm run start` and keep the browser open at [http://localhost:8080](http://localhost:8080). The documentation app in browser will auto reload whenever you made changes to either the library components or the documentation app itself.
 
-To add your own Vue components, add your Vue files under [src](src), and make sure export them in `index.js`. You should use scoped CSS for your Vue components.
-
-To change the library name from the default `mylib`, edit the name property in [package.json](package.json). In addition, [webpack.config.js](webpack.config.js) resolves alias `mylib` to `src` folder, so that the documentation app can access the library components like the following. You may also want to change it, but it is optional.
-
-```
-import { MyComponent } from 'mylib';
-```
+To add your own Vue components, add your Vue files under [src](src), and make sure export them in `index.js`. You should use scoped CSS for your Vue components. If your component is complicated and involves a number of internal components, create a sub-folder to host these related components and add `index.js` to this sub-folder to export only the public component(s).
 
 To publish the documentation app online, such as to [GitHub Pages](https://pages.github.com/) or [Surge](https://surge.sh/), run `npm run build-docs`, and publish the `docs/dist` folder. 
 
