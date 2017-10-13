@@ -1,6 +1,10 @@
 # Vue Component Lib Starter
 
-> This repo contains a bare-bones example of how to create your own Vue component library. The libray is built by [Rollup](https://rollupjs.org/), while the documentation app is built by [WebPack 2](https://webpack.github.io/). This is following the [recommendation](https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c): "Use webpack for apps, and Rollup for libraries".
+> This repo contains a bare-bones example of how to create your own Vue component library.
+
+The libray is built by [Rollup](https://rollupjs.org/), while the documentation app is built by [WebPack 2](https://webpack.github.io/). This is following the [recommendation](https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c): "Use webpack for apps, and Rollup for libraries".
+
+[Demo of documentation app](https://wuruoyun.github.io/vue-component-lib-starter)
 
 ## Build Setup
 
