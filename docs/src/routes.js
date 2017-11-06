@@ -1,10 +1,10 @@
-import QuickStartPage from './pages/QuickStartPage.vue';
-import ComponentAPage from './pages/ComponentAPage.vue';
-import ComponentBPage from './pages/ComponentBPage.vue';
+import QuickStart from './pages/QuickStart.md';
+import ComponentA from './pages/ComponentA.md';
+import ComponentB from './pages/ComponentB.md';
 
 export default [
-  { path: '/quick-start', component: QuickStartPage },
-  { path: '/component-a', component: ComponentAPage },
-  { path: '/component-b', component: ComponentBPage },
+  { path: '/quick-start', component: QuickStart },
+  { path: '/component-a', component: ComponentA },
+  { path: '/component-b', component: ComponentB },
   { path: '*', redirect: '/quick-start' }
 ]

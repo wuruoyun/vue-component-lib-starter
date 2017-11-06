@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import SideBar from './sections/SideBar.vue';
-import Footer from './sections/Footer.vue';
+import SideBar from './components/SideBar.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   components: {
