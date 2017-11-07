@@ -4,15 +4,15 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
+import { minify } from 'uglify-es';
 import pkg from './package.json';
 
 const LIB_NAME = pkg.name;
 
 export default {
-  moduleName: LIB_NAME,
   entry: 'src/index.js',
   dest: `dist/${LIB_NAME}.js`,
-  format: 'iife',
+  format: 'es',
   sourceMap: true,
   plugins: [
     resolve({
@@ -31,6 +31,6 @@ export default {
     replace({
       ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
-    (process.env.NODE_ENV === 'production' && uglify()),
+    (process.env.NODE_ENV === 'production' && uglify({}, minify)),
   ],
 };
