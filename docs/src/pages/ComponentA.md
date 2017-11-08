@@ -9,16 +9,11 @@ The description for Component A goes here.
   <component-a :msg="msg"/>
 </template>
 <script>
-import { ComponentA } from 'mylib';
-
 export default {
   data() {
     return {
       msg: 'Greeting'
     }
-  },
-  components: {
-    ComponentA
   }
 }
 </script>

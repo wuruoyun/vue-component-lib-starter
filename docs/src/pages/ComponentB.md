@@ -10,16 +10,11 @@ The description for Component B goes here.
 </template>
 
 <script>
-import { ComponentB } from 'mylib';
-
 export default {
   methods: {
     onClick(value) {
       alert("Component B has value: " + value);
     }
-  },
-  components: {
-    ComponentB
   }
 }
 </script>
