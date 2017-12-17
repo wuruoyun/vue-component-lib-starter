@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentA.vue has the expected html structure 1`] = `
+<div
+  class="component-a"
+>
+  <p>
+    Component A has 'msg' prop: 
+    <span
+      class="message"
+    >
+      Greeting
+    </span>
+  </p>
+</div>
+`;

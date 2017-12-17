@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="component-a">
     <p>Component A has 'msg' prop: <span class="message">{{ msg }}</span></p>
   </div>
 </template>

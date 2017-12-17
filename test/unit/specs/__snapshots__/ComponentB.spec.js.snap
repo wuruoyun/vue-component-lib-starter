@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentB.vue has the expected html structure 1`] = `
+<div
+  class="component-b"
+>
+  <input
+    type="text"
+  />
+   
+  <button>
+    Click me
+  </button>
+</div>
+`;

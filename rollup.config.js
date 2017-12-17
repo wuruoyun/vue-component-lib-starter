@@ -26,8 +26,6 @@ export default {
       css: `dist/${LIB_NAME}.css`
     }),
     babel({
-      plugins: ['external-helpers'],
-      externalHelpers: true,
       exclude: 'node_modules/**'
     }),
     replace({
