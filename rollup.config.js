@@ -1,5 +1,5 @@
 import vue from 'rollup-plugin-vue';
-import babel from 'rollup-plugin-buble';
+import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
@@ -26,11 +26,13 @@ export default {
       css: `dist/${LIB_NAME}.css`
     }),
     babel({
+      plugins: ['external-helpers'],
+      externalHelpers: true,
       exclude: 'node_modules/**'
     }),
     replace({
       ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
-    (process.env.NODE_ENV === 'production' && uglify({}, minify)),
+    (process.env.NODE_ENV === 'production' && uglify({}, minify))
   ],
 };
