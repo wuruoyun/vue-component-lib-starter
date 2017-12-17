@@ -3,23 +3,21 @@ import { mount } from 'vue-test-utils';
 import ComponentB from '@/components/ComponentB';
 
 describe('ComponentB.vue', () => {
-  let cmp;
+  let wrapper;
 
   beforeEach(() => {
-    cmp = mount(ComponentB);
+    wrapper = mount(ComponentB);
   });
 
   it('has the expected html structure', () => {
-     expect(cmp.element).toMatchSnapshot();
+     expect(wrapper.element).toMatchSnapshot();
   });
 
   it('triggers a click event when the button is clicked', () => {
-    const stub = jest.fn();
-    cmp.vm.$on('click', stub);
-    cmp.setData({ value: 'Vue2' });
-    const el = cmp.find('button').trigger('click');
-  
-    expect(stub).toBeCalledWith('Vue2');
+    wrapper.setData({ value: 'Vue2' });
+    wrapper.find('button').trigger('click');
+    expect(wrapper.emitted().click).toBeTruthy();
+    expect(wrapper.emitted().click[0]).toEqual(['Vue2']);
   });
 
 })
