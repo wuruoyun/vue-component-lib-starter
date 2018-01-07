@@ -6,7 +6,7 @@
 
 ## Demo
 
-- [Library Documentation](http://wuruoyun.github.io/wuruoyun/vue-component-lib-starter)
+- [Library Documentation](http://wuruoyun.github.io/vue-component-lib-starter)
 
 ## Usage
 
@@ -35,8 +35,7 @@ The development server will run on port 8080 by default. If that port is already
 
 - `npm run build`: Production ready build.
   - JavaScript minified with [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony).
-  - HTML minified with [html-minifier](https://github.com/kangax/html-minifier).
-  - CSS across all components extracted into a single file and minified with [cssnano](https://github.com/ben-eb/cssnano).
+  - CSS across all components extracted into a single file. TODO: minified with [cssnano](https://github.com/ben-eb/cssnano).
 
 - `npm run unit`: Unit tests run in [JSDOM](https://github.com/tmpvar/jsdom) with [Jest](https://facebook.github.io/jest/), or in PhantomJS with Karma + Mocha + karma-webpack.
   - Supports ES2015+ in test files.
