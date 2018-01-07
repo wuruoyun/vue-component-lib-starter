@@ -1,87 +1,51 @@
-# Vue Component Lib Starter
+# Vue Component Library Starter
 
-> This repo contains a bare-bones example of how to create your own Vue component library.
+> A full-featured Rollup + Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.
 
-The libray is built by [Rollup](https://rollupjs.org/), while the documentation app is built by [WebPack 2](https://webpack.github.io/). This is following the [recommendation](https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c): "Use webpack for apps, and Rollup for libraries".
+> This template is Vue 2.0 compatible. 
 
-[Demo of documentation app](https://wuruoyun.github.io/vue-component-lib-starter)
+## Demo
 
-## Build Setup
+- [Library Documentation](http://wuruoyun.github.io/wuruoyun/vue-component-lib-starter)
 
-```bash
-# install dependencies
-npm install
+## Usage
 
-# start the documentation app with hot reload at localhost:8080
-npm run start
+This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**
 
-# build the library for production
-npm run build
-
-# build the documentation app for production
-npm run build-docs
+``` bash
+$ npm install -g vue-cli
+$ vue init wuruoyun/vue-component-lib-starter my-project
+$ cd my-project
+$ npm install
+$ npm run start
 ```
 
-`npm run build` builds the library to `dist`, generating three files:
+This will scaffold the project using the `master` branch. 
 
-* `dist/mylib.js`
-    an ES module bundle, suitable for use in other people's libraries and applications, that `import`s the external dependency. 
-* `dist/mylib.js.map`
-    the source map for the library. 
-* `dist/mylib.css`
-    a regular CSS file that includes all the styles from the library components
+The development server will run on port 8080 by default. If that port is already in use on your machine, the next free port will be used.
 
-`npm run build-docs` buils the documentation app to `docs/dist`. 
+## What's Included
 
-## Get Started
+- `npm run start`: first-in-class development experience.
+  - Webpack + `vue-loader` for single file Vue components.
+  - State preserving hot-reload
+  - State preserving compilation error overlay
+  - Lint-on-save with ESLint
+  - Source maps
 
-The library has two example components [ComponentA.vue](src/components/ComponentA.vue) and [ComponentB.vue](src/components/ComponentB.vue). They are exported in [index.js](src/index.js). The documentation app is a simple Vue app that make use of the example components in the library. You may replace it completely with your own, such as one uses [vue-markdown-loader](https://github.com/QingWei-Li/vue-markdown-loader).
+- `npm run build`: Production ready build.
+  - JavaScript minified with [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony).
+  - HTML minified with [html-minifier](https://github.com/kangax/html-minifier).
+  - CSS across all components extracted into a single file and minified with [cssnano](https://github.com/ben-eb/cssnano).
 
-To change the default library name `mylib`, edit the name property in [package.json](package.json). In addition, [webpack.config.js](webpack.config.js) resolves alias `mylib` to `src` folder, so that the documentation app can access the library components like the following. You may also want to change it, but it is optional.
+- `npm run unit`: Unit tests run in [JSDOM](https://github.com/tmpvar/jsdom) with [Jest](https://facebook.github.io/jest/), or in PhantomJS with Karma + Mocha + karma-webpack.
+  - Supports ES2015+ in test files.
+  - Easy mocking.
 
+### Fork It And Make Your Own
+
+You can fork this repo to create your own boilerplate, and use it with `vue-cli`:
+
+``` bash
+vue init username/repo my-project
 ```
-import { ComponentA } from 'mylib';
-```
-
-To develop components with documentation app running, simple run `npm run start` and keep the browser open at [http://localhost:8080](http://localhost:8080). The documentation app in browser will auto reload whenever you made changes to either the library components or the documentation app itself.
-
-To add your own Vue components, add your Vue files under [src](src), and make sure export them in `index.js`. You should use scoped CSS for your Vue components. If your component is complicated and involves a number of internal components, create a sub-folder to host these related components and add `index.js` to this sub-folder to export only the public component(s). Regular single file Vue components go to [src/components](src/components). If you have mixins and directives in your library, create `mixins` and `directives` folder under [src](src) and put them there.
-
-To publish the documentation app online, such as to [GitHub Pages](https://pages.github.com/) or [Surge](https://surge.sh/), run `npm run build-docs`, and publish the `docs/dist` folder. 
-
-## How it Works
-
-### Rollup & Webpack
-
-The project makes use of both [Rollup](https://rollupjs.org/) and [WebPack 2](https://webpack.github.io/). Although they are two different bundlers and producting separate ouputs, they can coexist in the same project, sharing the following:
-
-- Package definition [package.json](package.json)
-- Babel configuration [.babelrc](.babelrc)
-- Source codes for library components [src](src)
-
-In addition, Rollup uses the following:
-
-- Rollup configuration [rollup.config.js](rollup.config.js)
-
-And Webpack uses the following:
-
-- Webpack configuration [webpack.config.js](webpack.config.js)
-- Source codes for documentation apps [docs/src](docs/src)
-
-As [package.json](package.json) is shared by both library and document app, their dependencies are shared. To make the dependencies clean for the library, if an external library is only used by the documentation app, add them as `devDependencies` instead of `dependencies` or `peerDependencies`.
-
-### Dependencies
-
-The library has a peer dependency to Vue 2, expecting the consumer of the library has its own depency to Vue too. 
-
-The same version of Vue 2 is also in dev dependency so that when running `npm install`, it will also get installed.
-
-## Extension
-
-### JSX
-
-If you want to use JSX in your component, refer to [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx). You will need to install a few npm modules and configure your Babel to use the `transform-vue-jsx` plugin.
-
-## License
-
-[MIT](LICENSE).
