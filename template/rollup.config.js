@@ -10,10 +10,12 @@ import pkg from './package.json';
 const LIB_NAME = pkg.name;
 
 export default {
-  entry: 'src/index.js',
-  dest: `dist/${LIB_NAME}.js`,
-  format: 'es',
-  sourceMap: true,
+  input: 'src/index.js',
+  output: {
+    file: `dist/${LIB_NAME}.js`,
+    format: 'es',
+    sourcemap: true
+  },
   plugins: [
     resolve({
       jsnext: true,
