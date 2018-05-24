@@ -12,8 +12,8 @@ The description for Component B goes here.
 <script>
 export default {
   methods: {
-    onClick(value) {
-      alert("Component B has value: " + value);
+    onClick (value) {
+      alert('Component B has value: ' + value)
     }
   }
 }

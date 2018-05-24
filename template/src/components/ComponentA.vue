@@ -1,6 +1,6 @@
 <template>
   <div class="component-a">
-    <p>Component A has 'msg' prop: <span class="message">{{ msg }}</span></p>
+    Value of 'msg' prop: <span class="message">\{{msg}}</span>
   </div>
 </template>
 
@@ -16,7 +16,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.message {
-  color: #42b983;
+.component-a {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+
+  .message {
+    color: #42b983;
+  }
 }
 </style>

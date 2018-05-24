@@ -8,7 +8,7 @@
         <li v-for="section in sections" :key="section.title">
           <p>\{{section.title}}</p>
           <ul>
-            <router-link v-for="page in section.pages" 
+            <router-link v-for="page in section.pages"
               tag="li" active-class="active" :key="page.title" :to="page.to">
               <a>\{{page.title}}</a>
             </router-link>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       sections: [
         {

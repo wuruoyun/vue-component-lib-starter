@@ -10,7 +10,7 @@ The description for Component A goes here.
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       msg: 'Greeting'
     }

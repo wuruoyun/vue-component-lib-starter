@@ -1,6 +1,6 @@
-import QuickStart from './pages/QuickStart.md';
-import ComponentA from './pages/ComponentA.md';
-import ComponentB from './pages/ComponentB.md';
+import QuickStart from './pages/QuickStart.md'
+import ComponentA from './pages/ComponentA.md'
+import ComponentB from './pages/ComponentB.md'
 
 export default [
   { path: '/quick-start', component: QuickStart },

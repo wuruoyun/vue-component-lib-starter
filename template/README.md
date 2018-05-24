@@ -34,6 +34,7 @@ The project makes use of both [Rollup](https://rollupjs.org/) and [WebPack 2](ht
 
 - Package definition [package.json](package.json)
 - Babel configuration [.babelrc](.babelrc)
+- PostCSS configuration [postcss.config.js](postcss.config.js)
 - Source codes for library components [src](src)
 
 In addition, Rollup uses the following:
