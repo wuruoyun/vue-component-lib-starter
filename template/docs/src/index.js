@@ -8,7 +8,10 @@ Vue.use(VueRouter)
 Vue.use(mylib)
 
 const router = new VueRouter({
-  routes // short for `routes: routes`
+  routes, // short for `routes: routes`
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
 
 /* eslint-disable no-new */
