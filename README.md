@@ -1,50 +1,28 @@
 # Vue Component Library Starter
 
-> A full-featured Rollup + Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.
+> Create your own component library with [Vue CLI 3](https://cli.vuejs.org/) and [VuePress](https://vuepress.vuejs.org/).
 
-> This template is Vue 2.0 compatible. 
-
-## Demo
-
-- [Library Documentation](http://wuruoyun.github.io/vue-component-lib-starter)
+This project also includes a documentation app. It is also a convenient testbed for the components in the library during the development. See example [here](http://wuruoyun.github.io/vue-component-lib-starter).
 
 ## Usage
 
-This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**
+> VuePress `0.14.8` is using `@babel/core-7.0.0-beta.47`. Installing it globally to avoid confliction with Vue CLI, which is using `@babel/core-7.1.6`.
 
 ``` bash
-$ npm install -g vue-cli
-$ vue init wuruoyun/vue-component-lib-starter my-project
-$ cd my-project
-$ npm install
-$ npm run start
+# install VuePress globally
+npm install -g vuepress
+
+# install dependencies
+npm install
+
+# start the doc app
+npm run docs:dev
+
+# build the library
+npm run build
+
+# build the doc app
+npm run docs:build
 ```
 
-This will scaffold the project using the `master` branch. 
-
-The development server will run on port 8080 by default. If that port is already in use on your machine, the next free port will be used.
-
-## What's Included
-
-- `npm run start`: first-in-class development experience.
-  - Webpack + `vue-loader` for single file Vue components.
-  - State preserving hot-reload
-  - State preserving compilation error overlay
-  - Lint-on-save with ESLint
-  - Source maps
-
-- `npm run build`: Production ready build.
-  - JavaScript minified with [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony).
-  - CSS across all components extracted into a single file. TODO: minified with [cssnano](https://github.com/ben-eb/cssnano).
-
-- `npm run unit`: Unit tests run in [JSDOM](https://github.com/tmpvar/jsdom) with [Jest](https://facebook.github.io/jest/), or in PhantomJS with Karma + Mocha + karma-webpack.
-  - Supports ES2015+ in test files.
-  - Easy mocking.
-
-### Fork It And Make Your Own
-
-You can fork this repo to create your own boilerplate, and use it with `vue-cli`:
-
-``` bash
-vue init username/repo my-project
-```
+Replace the example codes in the project with your own to start building your library!
