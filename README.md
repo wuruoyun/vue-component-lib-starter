@@ -25,4 +25,7 @@ npm run build
 npm run docs:build
 ```
 
-Replace the example codes in the project with your own to start building your library!
+To start building your own components:
+
+* Replace the `base` option in `.vuepress/config.js` accordingly
+* Remove the example components and their docs, add your own
