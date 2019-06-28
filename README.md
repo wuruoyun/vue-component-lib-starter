@@ -6,9 +6,7 @@ Sooner or later, you will find that creating a component library is much better 
 
 Once the components are in a libaray, documentation becomes critical. This starter project includes a documentation app. It not only documents the usage of the component, but also provides a testing bed during development of the components. See example [here](http://wuruoyun.github.io/vue-component-lib-starter).
 
-> This project is using VuePress `1.x` alpha.
-
-## Usage
+## Setup
 
 ``` bash
 # install dependencies
@@ -31,3 +29,34 @@ To start building your own components:
 
 * Replace the `base` option in `.vuepress/config.js` accordingly
 * Replace the example components and their docs with your own
+
+## Client demo
+
+The following simple example shows how the components in the library can be used.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head><title>Demo app</title></head>
+  <body>
+    <div id="app">
+      <p>Component A: <component-a/></p>
+      <p>Component B: <component-b @click="onClick"/></p>
+    </div>
+  </body>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="./mylib.umd.js"></script>
+  <script>
+      console.log(mylib)
+      var app = new Vue({
+        el: '#app',
+        methods: {
+          onClick (message) {
+            alert(message)
+          }
+        }
+      })
+    </script>
+</html>
+```

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vue-cli-service build --target lib --name my-lib ./src/index.js",
+    "build": "vue-cli-service build --target lib --name mylib ./src/index.js",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
     "docs:dev": "vuepress dev docs",
