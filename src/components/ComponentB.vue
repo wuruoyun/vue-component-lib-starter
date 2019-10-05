@@ -9,7 +9,7 @@
 export default {
   data () {
     return {
-      value: 'Vue'
+      value: 'Hello'
     }
   },
   methods: {
@@ -22,6 +22,11 @@ export default {
 
 <style lang="scss" scoped>
 .component-b {
-  color: yellow;
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 3px;
+  button {
+    font-weight: bold;
+  }
 }
 </style>
