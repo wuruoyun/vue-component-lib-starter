@@ -4,7 +4,7 @@
 
 Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force you remove app specific logic from your components, makes it possible to reuse them in other apps. 
 
-Once the components are in a libaray, documentation becomes critical. This starter project includes a documentation app. It not only documents the usage of the component, but also provides a testing bed during development of the components. See example [here](http://wuruoyun.github.io/vue-component-lib-starter).
+Once the components are in a libraray, documentation becomes critical. This starter project includes a documentation app powered by VuePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See example [here](http://wuruoyun.github.io/vue-component-lib-starter).
 
 ## Setup
 
@@ -12,27 +12,22 @@ Once the components are in a libaray, documentation becomes critical. This start
 # install dependencies
 npm install
 
-# start the doc app with hot reload
+# start the doc app with hot reload, great for testing components
 npm run docs:dev
 
-# test the library
-npm run test
-
-# build the library
+# build the library, available under dist
 npm run build
 
-# build the doc app
+# build the doc app, available under docs/.vuepress/dist
 npm run docs:build
 ```
 
-To start building your own components:
 
-* Replace the `base` option in `.vuepress/config.js` accordingly
-* Replace the example components and their docs with your own
+## Use your component library
 
-## Client demo
+You may publish your component library to NPM repository. If you prefer to use/test your component library locally in a client app, you may use `npm link` or [install-local](https://github.com/nicojs/node-install-local).
 
-The following simple example shows how the components in the library can be used.
+If your app is not using a bundler, the following is the example of how to use the library in vanilla HTML page.
 
 ```html
 <!DOCTYPE html>
@@ -46,9 +41,9 @@ The following simple example shows how the components in the library can be used
   </body>
 
   <script src="https://unpkg.com/vue"></script>
-  <script src="./mylib.umd.js"></script>
+  <script src="dist/my-lib.umd.js"></script>
   <script>
-      console.log(mylib)
+      console.log(window['my-lib'])
       var app = new Vue({
         el: '#app',
         methods: {

@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/vue-component-lib-starter/',
+  base: '/',
   title: 'My Library',
   description: 'Just playing around',
   themeConfig: {
