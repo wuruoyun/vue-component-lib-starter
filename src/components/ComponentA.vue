@@ -1,12 +1,14 @@
 <template>
-  <button v-on:click="count++">You clicked me {{ count }} times.</button>
+  <div>Current time: {{ count }}.</div>
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   data: function () {
     return {
-      count: 0
+      count: moment().format('MMMM Do YYYY, h:mm:ss a')
     }
   }
 }

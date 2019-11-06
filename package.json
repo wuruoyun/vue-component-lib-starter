@@ -8,9 +8,11 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "peerDependencies": {
+  "dependencies": {
+    "moment": "^2.24.0",
     "vue": "^2.6.10"
   },
+  "main": "src/index.js",
   "files": [
     "dist/*.{js,css}"
   ],
@@ -24,7 +26,6 @@
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.0",
-    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
     "vuepress": "^1.1.0"
   }

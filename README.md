@@ -24,6 +24,39 @@ npm run build
 npm run docs:build
 ```
 
+## How it works
+
+### Installation
+
+The library is a [Vue plugin](https://vuejs.org/v2/guide/plugins.html). Its `install` function in [install.js](src/install.js) imports all components from `components` folder, registers them to Vue and automatically call itself.
+
+### External libraries
+
+As an example, the popular library [moment](https://momentjs.com/) is used by Component-A. Since it is very likely the client of your library may also use this library, we configure CLI not to include it to the bundle by adding the following in `vue.config.js`.
+
+```js
+module.exports = {
+  //...
+  chainWebpack: config => {
+    config.externals({
+      moment: 'moment'
+    })
+  }
+}
+```
+
+In your client app, you don't need to explicitly add dependency to `moment` in `package.json` as it is a dependency of `my-lib`. However, if you want to reduce the size of the bundle size of client app, add the following in the `vue.config.js` of client app ([details](https://github.com/jmblog/how-to-optimize-momentjs-with-webpack)), assuming it is also built with Vue CLI .
+
+```js
+const webpack = require('webpack')
+module.exports = {
+  //...
+  plugins: [
+    // Ignore all locale files of moment.js
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  ],
+}
+```
 
 ## Use your component library
 
