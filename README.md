@@ -26,9 +26,33 @@ npm run docs:build
 
 ## How it works
 
-### Installation
+### Components
 
 The library is a [Vue plugin](https://vuejs.org/v2/guide/plugins.html). Its `install` function in [install.js](src/install.js) imports all components from `components` folder, registers them to Vue and automatically call itself.
+
+### Mixins, Utils and Constants
+
+Besides the `install` function, [index.js](src/index.js) may also exports mixins, utils and constants. The client may use them as below:
+
+```js
+<script>
+import { MyMixin, MyConstants, MyUtil } from 'my-lib'
+
+export default {
+  mixins: [MyMixin],
+  data () {
+    return {
+      magicNum: MyConstants.MAGIC_NUM
+    }
+  },
+  methods: {
+    add (a, b) {
+      return MyUtil.add(a, b)
+    }
+  }
+}
+</script>
+```
 
 ### External libraries
 

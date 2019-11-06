@@ -1,5 +1,5 @@
 <template>
-  <div>Current time: {{ count }}.</div>
+  <div>Load time: {{ count }}.</div>
 </template>
 
 <script>

@@ -6,7 +6,10 @@
 </template>
 
 <script>
+import MyMixin from '../mixins/MyMixin'
+
 export default {
+  mixins: [MyMixin],
   data () {
     return {
       value: 'Hello'
