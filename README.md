@@ -54,9 +54,11 @@ export default {
 </script>
 ```
 
-### External libraries
+### Third-party libraries
 
-As an example, the popular library [moment](https://momentjs.com/) is used by Component-A. Since it is very likely the client of your library may also use this library, we configure CLI not to include it to the bundle by adding the following in `vue.config.js`.
+Third-party libraries you library depends on bloats the size of your library, if not handled well.
+
+One strategy is to make it external. As an example, the popular library [moment](https://momentjs.com/) is used by ComponentA. Since it is very likely the client of your library may also use this library, we configure CLI not to include it to the bundle by adding the following in `vue.config.js`.
 
 ```js
 module.exports = {
@@ -80,6 +82,14 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
 }
+```
+
+Another strategy is to embed cherry-picked functions with tree shaking. As an example, the `fill` function of popular library [lodash](https://lodash.com) is used by ComponentA.
+
+To get the tree shaking working, import the `fill` function like the following. Note that `import { fill } from 'lodash'` or `import _ from 'lodash'` will not work and will embed the whole `lodash` library.
+
+```js
+import fill from 'lodash/fill'
 ```
 
 ## Use your component library

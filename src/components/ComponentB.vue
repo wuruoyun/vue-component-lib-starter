@@ -12,7 +12,7 @@ export default {
   mixins: [MyMixin],
   data () {
     return {
-      value: 'Hello'
+      value: this.hello()
     }
   },
   methods: {
