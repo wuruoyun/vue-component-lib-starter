@@ -1,3 +1,5 @@
+const { resolve } = require('path')
+
 module.exports = {
   base: '/',
   title: 'My Library',
@@ -26,7 +28,11 @@ module.exports = {
       }
     ]
   },
-  markdown: {
-    lineNumbers: true
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'my-lib': resolve(__dirname, '../../src')
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-import * as mylib from '../../src'
+import * as mylib from 'my-lib'
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app

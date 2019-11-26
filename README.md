@@ -58,6 +58,8 @@ export default {
 
 Third-party libraries you library depends on bloats the size of your library, if not handled well.
 
+#### Externalize
+
 One strategy is to make it external. As an example, the popular library [moment](https://momentjs.com/) is used by ComponentA. Since it is very likely the client of your library may also use this library, we configure CLI not to include it to the bundle by adding the following in `vue.config.js`.
 
 ```js
@@ -83,6 +85,8 @@ module.exports = {
   ],
 }
 ```
+
+#### Cherry picking
 
 Another strategy is to embed cherry-picked functions with tree shaking. As an example, the `fill` function of popular library [lodash](https://lodash.com) is used by ComponentA.
 
