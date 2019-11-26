@@ -92,6 +92,8 @@ To get the tree shaking working, import the `fill` function like the following. 
 import fill from 'lodash/fill'
 ```
 
+If your client app also use `lodash` and you don't want `lodash` to be in both the client app and the component libraries, even after cherry-picking, you may consider cherry picking in component library and re-export them as utils for client to consume, so that the client does not need to depend on `lodash`, therefore avoiding duplication.
+
 ## Use your component library
 
 You may publish your component library to NPM repository. If you prefer to use/test your component library locally in a client app, you may use `npm link` or [install-local](https://github.com/nicojs/node-install-local).
