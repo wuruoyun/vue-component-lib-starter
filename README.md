@@ -8,6 +8,8 @@ Sooner or later, you will find that creating a component library is much better 
 
 Once the components are in a libraray, documentation becomes critical. This starter project includes a documentation app powered by VuePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See the generated documentation app [here](https://sharp-babbage-154f0a.netlify.com/).
 
+> Dev dependency "@vue/babel-preset-app": "^4.1.1" is introduced as Vue CLI v4 is using core-js v3.x while vuepress 1.2.0 is still using core-js v2.x.
+
 ## Setup
 
 ``` bash
