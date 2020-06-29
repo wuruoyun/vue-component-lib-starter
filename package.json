@@ -15,24 +15,25 @@
   ],
   "dependencies": {
     "lodash": "^4.17.15",
+    "npm-check-updates": "^7.0.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@vue/babel-preset-app": "^4.1.1",
-    "@vue/cli-plugin-babel": "^4.1.1",
-    "@vue/cli-plugin-eslint": "^4.1.1",
-    "@vue/cli-service": "^4.1.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.0.1",
-    "moment": "^2.24.0",
-    "node-sass": "^4.13.0",
-    "sass-loader": "^8.0.0",
+    "@babel/core": "^7.10.3",
+    "@vue/babel-preset-app": "^4.4.6",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.3.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "moment": "^2.27.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
-    "vuepress": "^1.2.0"
+    "vuepress": "^1.5.2"
   },
   "peerDependencies": {
-    "moment": "^2.24.0"
+    "moment": "^2.27.0"
   }
 }
