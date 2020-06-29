@@ -15,7 +15,6 @@
   ],
   "dependencies": {
     "lodash": "^4.17.15",
-    "npm-check-updates": "^7.0.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
