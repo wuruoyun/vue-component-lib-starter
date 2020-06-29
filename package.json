@@ -11,6 +11,7 @@
   "main": "dist/my-lib.umd.min.js",
   "files": [
     "src",
+    "assets",
     "dist/*.{js,css}"
   ],
   "dependencies": {

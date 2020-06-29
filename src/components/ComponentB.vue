@@ -1,5 +1,5 @@
 <template>
-  <div class="component-b">
+  <div class="global-style component-b">
     <input type="text" v-model="value">
     <button @click="onClick">Click me</button>
   </div>

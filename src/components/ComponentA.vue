@@ -1,5 +1,5 @@
 <template>
-  <div class="component-a">
+  <div class="global-style component-a">
     <p>Load time by moment: {{ loadTime }}.</p>
     <p>Fill array by lodash: {{ filledArray }}</p>
   </div>

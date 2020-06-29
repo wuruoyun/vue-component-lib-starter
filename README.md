@@ -56,6 +56,18 @@ export default {
 </script>
 ```
 
+### Global styles
+
+If your component library contains a set of styles used by all components, you may refer to `asserts/main.css` as an example. It defines a simple style (green color border) used by the two example components in the library.
+
+To use the global style in client app, including the components defined by the client app, import it in your `main.js`:
+
+```js
+import 'my-lib/assets/main.css'
+```
+
+If you want to avoid conflicting with other global styles, consider pre-fix your classes in your style, or wrap them into a namespace class.
+
 ### Third-party libraries
 
 Third-party libraries you library depends on bloats the size of your library, if not handled well.
@@ -104,12 +116,16 @@ If your client app also use `lodash` and you don't want `lodash` to be in both t
 
 You may publish your component library to NPM repository. If you prefer to use/test your component library locally in a client app, you may use `npm link` or [install-local](https://github.com/nicojs/node-install-local).
 
-If your app is not using a bundler, the following is the example of how to use the library in vanilla HTML page.
+If your app is not using a bundler, the following is the example of how to use the library in vanilla HTML page. Note that it loads the global and component level CSS, as well as externalized third-party library Moment.
 
 ```html
 <!DOCTYPE html>
 <html>
-  <head><title>Demo app</title></head>
+  <head>
+    <title>Demo app</title>
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="dist/my-lib.css">
+  </head>
   <body>
     <div id="app">
       <p>Component A: <component-a/></p>
@@ -118,6 +134,7 @@ If your app is not using a bundler, the following is the example of how to use t
   </body>
 
   <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/moment"></script>
   <script src="dist/my-lib.umd.js"></script>
   <script>
       console.log(window['my-lib'])
