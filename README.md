@@ -2,15 +2,15 @@
 
 # Vue Component Library Starter
 
-> Create your own Vue 3 component library with TypeScript, [Vite](https://vitejs.dev) and [VuePress 2](https://v2.vuepress.vuejs.org).
+> Create your own [Vue 3](https://v3.vuejs.org/) component library with TypeScript, [Vite](https://vitejs.dev) and [VuePress 2](https://v2.vuepress.vuejs.org).
 
-Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force you remove app specific logic from your components, makes it easier to test and reuse them in other apps. 
+Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force you remove app specific logic from your components, makes it easier to test and reuse them in other apps.
 
 Once the components are in a libraray, documentation becomes critical. This starter project includes a documentation app powered by VuePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See the generated documentation app [here](https://sharp-babbage-154f0a.netlify.com/).
 
 ## Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -24,16 +24,16 @@ npm run build
 npm run docs:build
 ```
 
-To preview the docs build locally, server the folder `docs/.vuepress/dist` using [http-server](https://www.npmjs.com/package/http-server). Double-clicking the `index.html` won't work.
+You may use [Netlify](https://www.netlify.com/) to auto build and deloy the doc app like this project does. To preview the docs build locally, serve the folder `docs/.vuepress/dist` using [http-server](https://www.npmjs.com/package/http-server). Double-clicking the `index.html` won't work.
 
 ## Develop and test locally
 
-The best way to develop and test your component is by creating demos in `docs` folder, as shown by the example components. 
+The best way to develop and test your component is by creating demos in `docs` folder, as shown by the example components.
 
 If you want to test the library in your Vue3 app:
 
-* In the root folder of this library, run `npm link`. This will create a symbolic link to the library.
-* In the root folder of your client app, run `npm link my-lib`. This will add the symbolic link to the `node_modules` folder in your client app.
+- In the root folder of this library, run `npm link`. This will create a symbolic link to the library.
+- In the root folder of your client app, run `npm link my-lib`. This will add the symbolic link to the `node_modules` folder in your client app.
 
 If you made changes to the library, you will need to rebuild the library. Your Vue3 app will hot reload when the library is built.
 
@@ -49,7 +49,7 @@ The components are also exported by [index.ts](src/index.ts) so that the client 
 
 The library includes example utilities and constants. They are also exported in [index.ts](src/index.ts). The client app may use them as below:
 
-``` js
+```js
 <script lang="ts">
 import { MyConstants, MyUtil } from 'my-lib'
 
@@ -77,7 +77,7 @@ If you have library level styles shared by all components in the library, you ma
 The client app shall import `my-lib/style.css`, usually in the entry file:
 
 ```js
-import 'my-lib/dist/style.css'
+import 'my-lib/dist/style.css';
 ```
 
 ### Third-party dependencies
@@ -90,7 +90,7 @@ The following are some strategies to reduce the size of your library:
 
 If you expect the client app of your library may also need the same dependency, you may externalize the dependency. For example, in [vite.config.ts](vite.config.ts), you may have
 
-``` js
+```js
 module.exports = defineConfig({
     rollupOptions: {
       output: {
@@ -110,12 +110,12 @@ The dependency to be externalized may be declared as peer dependency in your lib
 If you don't expect the client app of your library also needing the same dependency, you may embed cherry-picked functions. For example, to embed the `fill` function of popular library [lodash](https://lodash.com), import the `fill` function like the following:
 
 ```js
-import fill from 'lodash/fill'
+import fill from 'lodash/fill';
 ```
 
 Even with tree-shaking, the codes being brought into your library may still be large, as the function may have its own dependencies.
 
-Note that `import { fill } from 'lodash'` or `import _ from 'lodash'` will not work and will embed the whole `lodash` library. 
+Note that `import { fill } from 'lodash'` or `import _ from 'lodash'` will not work and will embed the whole `lodash` library.
 
 Finally, if your client app also use `lodash` and you don't want `lodash` to be in both the client app and your libraries, even after cherry-picking, you may consider cherry-picking in component library and re-export them as utils for client to consume, so that the client does not need to depend on `lodash`, therefore avoiding duplication.
 
@@ -130,4 +130,3 @@ The folder `types` is also included in `files` in [package.json](package.json), 
 ### Misc
 
 In [tsconfig.json](tsconfig.js), `compilerOptions.isolatedModules` is set to `true` as recommended by Vite (since esbuild is used). However, enableing this option leads to [https://github.com/vitejs/vite/issues/5814](https://github.com/vitejs/vite/issues/5814). The workaround is to also enable `compilerOptions.skipLibCheck`.
-
