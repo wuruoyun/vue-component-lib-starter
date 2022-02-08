@@ -2,13 +2,11 @@
 
 # Vue Component Library Starter
 
-> Create your own component library with [Vue CLI 3](https://cli.vuejs.org/) and [VuePress](https://vuepress.vuejs.org/).
+> Create your own Vue 3 component library with TypeScript, [Vite](https://vitejs.dev) and [VuePress 2](https://v2.vuepress.vuejs.org).
 
-Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force you remove app specific logic from your components, makes it possible to reuse them in other apps. 
+Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force you remove app specific logic from your components, makes it easier to test and reuse them in other apps. 
 
 Once the components are in a libraray, documentation becomes critical. This starter project includes a documentation app powered by VuePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See the generated documentation app [here](https://sharp-babbage-154f0a.netlify.com/).
-
-> Dev dependency "@vue/babel-preset-app": "^4.1.1" is introduced as Vue CLI v4 is using core-js v3.x while vuepress 1.2.0 is still using core-js v2.x.
 
 ## Setup
 
@@ -26,29 +24,43 @@ npm run build
 npm run docs:build
 ```
 
+To preview the docs build locally, server the folder `docs/.vuepress/dist` using [http-server](https://www.npmjs.com/package/http-server). Double-clicking the `index.html` won't work.
+
+## Develop and test locally
+
+The best way to develop and test your component is by creating demos in `docs` folder, as shown by the example components. 
+
+If you want to test the library in your Vue3 app:
+
+* In the root folder of this library, run `npm link`. This will create a symbolic link to the library.
+* In the root folder of your client app, run `npm link my-lib`. This will add the symbolic link to the `node_modules` folder in your client app.
+
+If you made changes to the library, you will need to rebuild the library. Your Vue3 app will hot reload when the library is built.
+
 ## How it works
 
 ### Components
 
-The library is a [Vue plugin](https://vuejs.org/v2/guide/plugins.html). Its `install` function in [install.js](src/install.js) imports all components from `components` folder, registers them to Vue and automatically call itself.
+The library is a [Vue plugin](https://v3.vuejs.org/guide/plugins.html). The `install` function in [index.ts](src/index.ts) registers all components under [components](src/components) to Vue globably.
 
-### Mixins, Utils and Constants
+The components are also exported by [index.ts](src/index.ts) so that the client app can import them individually and register them locally, instead of using the library as a plugin. This may be a better option if the client app only use a small set of components in your library.
 
-Besides the `install` function, [index.js](src/index.js) may also exports mixins, utils and constants. The client may use them as below:
+### Utilities and constants
 
-```js
-<script>
-import { MyMixin, MyConstants, MyUtil } from 'my-lib'
+The library includes example utilities and constants. They are also exported in [index.ts](src/index.ts). The client app may use them as below:
+
+``` js
+<script lang="ts">
+import { MyConstants, MyUtil } from 'my-lib'
 
 export default {
-  mixins: [MyMixin],
   data () {
     return {
       magicNum: MyConstants.MAGIC_NUM
     }
   },
   methods: {
-    add (a, b) {
+    add (a:number, b:number) {
       return MyUtil.add(a, b)
     }
   }
@@ -56,96 +68,66 @@ export default {
 </script>
 ```
 
-### Global styles
+### Styling
 
-If your component library contains a set of styles used by all components, you may refer to `asserts/main.css` as an example. It defines a simple style (green color border) used by the two example components in the library.
+Individual compopnent may have styles defined in its `.vue` file. They will be processed, combined and minified into `dist/style.css`, which is included in the `exports` list in [package.json](package.json).
 
-To use the global style in client app, including the components defined by the client app, import it in your `main.js`:
+If you have library level styles shared by all components in the library, you may add them to `assets/main.scss`. This file is imported in [index.ts](src/index.ts), and the build also includes the processed styles into `dist/style.css`. To avoid conflicting with other global styles, consider pre-fixing the class names or wrapping them into a namespace class.
+
+The client app shall import `my-lib/style.css`, usually in the entry file:
 
 ```js
-import 'my-lib/assets/main.css'
+import 'my-lib/dist/style.css'
 ```
 
-If you want to avoid conflicting with other global styles, consider pre-fix your classes in your style, or wrap them into a namespace class.
+### Third-party dependencies
 
-### Third-party libraries
+Third-party libraries you library is using may bloat the size of your library, if you simply add them to the `dependencies` in [package.json](package.json).
 
-Third-party libraries you library depends on bloats the size of your library, if not handled well.
+The following are some strategies to reduce the size of your library:
 
-#### Externalize
+#### Externalization
 
-One strategy is to make it external. As an example, the popular library [moment](https://momentjs.com/) is used by ComponentA. Since it is very likely the client of your library may also use this library, we configure CLI not to include it to the bundle by adding the following in `vue.config.js`.
+If you expect the client app of your library may also need the same dependency, you may externalize the dependency. For example, in [vite.config.ts](vite.config.ts), you may have
 
-```js
-module.exports = {
-  //...
-  chainWebpack: config => {
-    config.externals({
-      moment: 'moment'
-    })
+``` js
+module.exports = defineConfig({
+    rollupOptions: {
+      output: {
+        globals: {
+          moment: 'moment' // exclude 'moment' from your library
+        }
+      }
+    }
   }
-}
+})
 ```
 
-In your client app, you don't need to explicitly add dependency to `moment` in `package.json` as it is a dependency of `my-lib`. However, if you want to reduce the size of the bundle size of client app, add the following in the `vue.config.js` of client app ([details](https://github.com/jmblog/how-to-optimize-momentjs-with-webpack)), assuming it is also built with Vue CLI .
-
-```js
-const webpack = require('webpack')
-module.exports = {
-  //...
-  plugins: [
-    // Ignore all locale files of moment.js
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-  ],
-}
-```
+The dependency to be externalized may be declared as peer dependency in your library.
 
 #### Cherry picking
 
-Another strategy is to embed cherry-picked functions with tree shaking. As an example, the `fill` function of popular library [lodash](https://lodash.com) is used by ComponentA.
-
-To get the tree shaking working, import the `fill` function like the following. Note that `import { fill } from 'lodash'` or `import _ from 'lodash'` will not work and will embed the whole `lodash` library.
+If you don't expect the client app of your library also needing the same dependency, you may embed cherry-picked functions. For example, to embed the `fill` function of popular library [lodash](https://lodash.com), import the `fill` function like the following:
 
 ```js
 import fill from 'lodash/fill'
 ```
 
-If your client app also use `lodash` and you don't want `lodash` to be in both the client app and the component libraries, even after cherry-picking, you may consider cherry picking in component library and re-export them as utils for client to consume, so that the client does not need to depend on `lodash`, therefore avoiding duplication.
+Even with tree-shaking, the codes being brought into your library may still be large, as the function may have its own dependencies.
 
-## Use your component library
+Note that `import { fill } from 'lodash'` or `import _ from 'lodash'` will not work and will embed the whole `lodash` library. 
 
-You may publish your component library to NPM repository. If you prefer to use/test your component library locally in a client app, you may use `npm link` or [install-local](https://github.com/nicojs/node-install-local).
+Finally, if your client app also use `lodash` and you don't want `lodash` to be in both the client app and your libraries, even after cherry-picking, you may consider cherry-picking in component library and re-export them as utils for client to consume, so that the client does not need to depend on `lodash`, therefore avoiding duplication.
 
-If your app is not using a bundler, the following is the example of how to use the library in vanilla HTML page. Note that it loads the global and component level CSS, as well as externalized third-party library Moment.
+### Type generation
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Demo app</title>
-    <link rel="stylesheet" href="assets/main.css">
-    <link rel="stylesheet" href="dist/my-lib.css">
-  </head>
-  <body>
-    <div id="app">
-      <p>Component A: <component-a/></p>
-      <p>Component B: <component-b @click="onClick"/></p>
-    </div>
-  </body>
+The type definitions of the components, utilities and constants are generated by the `build` script in [package.json](package.json), via command line option `vue-tsc --declaration --emitDeclarationOnly`. The generated `.d.ts` files are output to `types` folder, as specified by `compilerOptions.declarationDir` in [tsconfig.json](tsconfig.json).
 
-  <script src="https://unpkg.com/vue"></script>
-  <script src="https://unpkg.com/moment"></script>
-  <script src="dist/my-lib.umd.js"></script>
-  <script>
-      console.log(window['my-lib'])
-      var app = new Vue({
-        el: '#app',
-        methods: {
-          onClick (message) {
-            alert(message)
-          }
-        }
-      })
-    </script>
-</html>
-```
+In [package.json](package.json), `"types": "./types/index.d.ts"` locates the generated types for consumption by the client.
+
+The folder `types` is also included in `files` in [package.json](package.json), so that it will be included in npm publish.
+
+### Misc
+
+In [tsconfig.json](tsconfig.js), `compilerOptions.isolatedModules` is set to `true` as recommended by Vite (since esbuild is used). However, enableing this option leads to [https://github.com/vitejs/vite/issues/5814](https://github.com/vitejs/vite/issues/5814). The workaround is to also enable `compilerOptions.skipLibCheck`.
+

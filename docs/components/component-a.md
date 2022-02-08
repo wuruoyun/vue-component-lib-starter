@@ -1,33 +1,32 @@
 # Component A
 
-## Example
+This is the documentation for Component A.
 
-The following example is a tag `<component-a/>` written directly in the markdown file.
+## Example Usage
 
-<component-a/>
+You may show demo below with the code shown.
 
-The code snippet can be written directly in markdown too. This could be useful especially when you only want to show a portion of the demo codes.
+<DemoContainer>
+  <ComponentA-Basic/>
+</DemoContainer>
 
-``` js
-<component-a/>
-```
+@[code](../.vuepress/components/ComponentA/Basic.vue)
+## Reference
+You may show props, slots, events, methods, etc. using Markdown.
+### Properties
 
-## Props
-Name | Type   | Description | Default
----- | :----: | ----------- | -----
-prop |        |             | 
+| Name        | Type     | Default  | Description     |
+| ----------- | -------- | -------- | --------------- |
+| msg         | string   | null     | Messge to show  |
 
-## Slots
-Name     | Slot props       | Description
--------- | -----------      | -----
-default  |                  | 
+### Events
 
-## Methods
-Name             | Params            | Description
----------------- | ----------------- | -------------------
-method1          |                   |
+| Name        | Parameters   | Description     |
+| ----------- | ----------   | --------------- |
+|             |              |                 |
 
-## Events
-Name             | Params            | Description
----------------- | ----------------- | -------------------
-event1           |                   |
+### Slots
+
+| Name        | Parameters   | Description     |
+| ----------- | ----------   | --------------- |
+|             |              |                 |

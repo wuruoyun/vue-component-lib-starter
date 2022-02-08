@@ -1,31 +1,33 @@
 # Component B
 
-## Example
+This is the documentation for Component B.
 
-The following example is using a demo component `.vuepress/component/ComponentBDemo1.vue`. 
+## Example Usage
 
-<component-b-demo-1/>
+You may show demo below with the code shown.
 
-The demo code can be included via `<<< @/docs/.vuepress/components/ComponentBDemo1.vue`.
+<DemoContainer>
+  <ComponentB-Basic/>
+</DemoContainer>
 
-<<< @/docs/.vuepress/components/ComponentBDemo1.vue
+@[code](../.vuepress/components/ComponentB/Basic.vue)
+## Reference
+You may show props, slots, events, methods, etc. using Markdown.
 
-## Props
-Name | Type   | Description | Default
----- | :----: | ----------- | -----
-prop |        |             | 
+### Properties
 
-## Slots
-Name     | Slot props       | Description
--------- | -----------      | -----
-default  |                  | 
+| Name        | Type     | Default  | Description     |
+| ----------- | -------- | -------- | --------------- |
+|             |          |          |                 |
 
-## Methods
-Name             | Params            | Description
----------------- | ----------------- | -------------------
-method1          |                   |
+### Events
 
-## Events
-Name             | Params            | Description
----------------- | ----------------- | -------------------
-event1           |                   |
+| Name        | Parameters   | Description     |
+| ----------- | ----------   | --------------- |
+|             |              |                 |
+
+### Slots
+
+| Name        | Parameters   | Description     |
+| ----------- | ----------   | --------------- |
+|             |              |                 |

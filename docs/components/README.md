@@ -1,4 +1,3 @@
 # Components
 
-## Overview
-Give a summary of the components in the library
+You may add a summary of the components here.
