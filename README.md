@@ -4,7 +4,7 @@
 
 > Create your own [Vue 3](https://v3.vuejs.org/) component library with TypeScript, [Vite](https://vitejs.dev) and [VuePress 2](https://v2.vuepress.vuejs.org).
 
-Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force you remove app specific logic from your components, makes it easier to test and reuse them in other apps.
+Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force to you remove app specific logic from your components, making it easier to test and reuse them in other apps.
 
 Once the components are in a libraray, documentation becomes critical. This starter project includes a documentation app powered by VuePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See the generated documentation app [here](https://sharp-babbage-154f0a.netlify.com/).
 
@@ -93,11 +93,7 @@ If you expect the client app of your library may also need the same dependency, 
 ```js
 module.exports = defineConfig({
     rollupOptions: {
-      output: {
-        globals: {
-          moment: 'moment' // exclude 'moment' from your library
-        }
-      }
+      external: ['moment'] // exclude 'moment' from your library
     }
   }
 })
