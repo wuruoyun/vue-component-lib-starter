@@ -23,8 +23,8 @@ npm run build
 # build the doc app, available under docs/.vitepress/dist
 npm run docs:build
 
-# preview the doc app built locally from docs/.vitepress/dist
-npm run docs:build
+# preview the doc app locally from docs/.vitepress/dist
+npm run docs:serve
 ```
 
 You may use [Netlify](https://www.netlify.com/) to auto build and deloy the doc app like this project does.
