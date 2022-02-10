@@ -4,6 +4,7 @@ module.exports = {
   title: 'My Lib',
   description: 'Just playing around.',
   themeConfig: {
+    repo: 'https://github.com/wuruoyun/vue-component-lib-starter',
     sidebar: [
       {
         text: 'Introduction',
