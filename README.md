@@ -20,22 +20,28 @@ npm run docs:dev
 # build the library, available under dist
 npm run build
 
-# build the doc app, available under docs/.vuepress/dist
+# build the doc app, available under docs/.vitepress/dist
+npm run docs:build
+
+# preview the doc app built locally from docs/.vitepress/dist
 npm run docs:build
 ```
 
-You may use [Netlify](https://www.netlify.com/) to auto build and deloy the doc app like this project does. To preview the docs build locally, serve the folder `docs/.vuepress/dist` using [http-server](https://www.npmjs.com/package/http-server). Double-clicking the `index.html` won't work.
+You may use [Netlify](https://www.netlify.com/) to auto build and deloy the doc app like this project does.
 
 ## Develop and test locally
 
-The best way to develop and test your component is by creating demos in `docs` folder, as shown by the example components.
+The best way to develop and test your component is by creating demos in `docs/components/demo` folder, as shown by the example components.
 
-If you want to test the library in your Vue3 app:
+If you want to test the library in your Vue3 app locally:
 
 - In the root folder of this library, run `npm link`. This will create a symbolic link to the library.
 - In the root folder of your client app, run `npm link my-lib`. This will add the symbolic link to the `node_modules` folder in your client app.
+- You can now import `my-lib` in your client app.
 
-If you made changes to the library, you will need to rebuild the library. Your Vue3 app will hot reload when the library is built.
+There is no need to add `my-lib` to your client app's dependency in this case.
+
+If you made changes to the library, you will need to rebuild the library. Your Vue3 app shall hot reload when the building of library is completed.
 
 ## How it works
 
@@ -45,7 +51,7 @@ The library is a [Vue plugin](https://v3.vuejs.org/guide/plugins.html). The `ins
 
 The components are also exported by [index.ts](src/index.ts) so that the client app can import them individually and register them locally, instead of using the library as a plugin. This may be a better option if the client app only use a small set of components in your library.
 
-As there are already many UI component libraries for Vue 3, you may just want to build on top of one of them and create components for your specific needs. The Component B in this starter shows the example of using [PrimeVue](https://www.primefaces.org/primevue/) as the example.
+As there are already many UI component libraries for Vue 3, you may just want to build on top of one of them and create components for your specific needs. The Component B in this starter shows the example of using [PrimeVue](https://www.primefaces.org/primevue/) as the fundation library. However, this means the client app shall also use the same fundation component library as your library does.
 
 ### Utilities and constants
 
@@ -74,7 +80,7 @@ export default {
 
 Individual compopnent may have styles defined in its `.vue` file. They will be processed, combined and minified into `dist/style.css`, which is included in the `exports` list in [package.json](package.json).
 
-If you have library level styles shared by all components in the library, you may add them to `assets/main.scss`. This file is imported in [index.ts](src/index.ts), and the build also includes the processed styles into `dist/style.css`. To avoid conflicting with other global styles, consider pre-fixing the class names or wrapping them into a namespace class.
+If you have library level styles shared by all components in the library, you may add them to `assets/main.scss`. This file is imported in [index.ts](src/index.ts), therefore the processed styles are also included into `dist/style.css`. To avoid conflicting with other global styles, consider pre-fixing the class names or wrapping them into a namespace class.
 
 The client app shall import `my-lib/style.css`, usually in the entry file:
 
@@ -84,18 +90,18 @@ import 'my-lib/dist/style.css';
 
 ### Third-party dependencies
 
-Third-party libraries you library is using may bloat the size of your library, if you simply add them to the `dependencies` in [package.json](package.json).
+Third-party libraries used by you library may bloat up the size of your library, if you simply add them to the `dependencies` in [package.json](package.json).
 
 The following are some strategies to reduce the size of your library:
 
 #### Externalization
 
-If you expect the client app of your library may also need the same dependency, you may externalize the dependency. For example, in [vite.config.ts](vite.config.ts), you may have
+If you expect the client app of your library may also need the same dependency, you may externalize the dependency. For example, to exclude PrimeVue from your library build artifact, in [vite.config.ts](vite.config.ts), you may have
 
 ```js
 module.exports = defineConfig({
     rollupOptions: {
-      external: ['moment'] // exclude 'moment' from your library
+      external: ['vue', /primevue\/.+/]
     }
   }
 })
@@ -133,8 +139,6 @@ In [tsconfig.json](tsconfig.js), `compilerOptions.isolatedModules` is set to `tr
 
 #### Third-party dependencies
 
-In [package.json](package.json), Vue and PrimeVue are declared in both `peerDependencies` and `devDependencies`. The former requires the client app to add these dependencies, and the later makes it easier to setup this library by simple `npm install`.
+In [package.json](package.json), Vue and PrimeVue are declared in both `peerDependencies` and `devDependencies`. The former requires the client app to add these dependencies, and the later makes it easier to setup this library by simply running `npm install`.
 
-In [vite.config.ts](vite.config.ts), `build.rollupOptions.external: ['vue', /primevue\/.+/]` ensures the codes from Vue and PrimeVue are excluded from the library build artifact. You shall do the same for the dependencies of your library.
-
-In [docs/.vitepress/config.js](docs/.vitepress/config.js), `vite.resolve.dedupe: ['vue', /primevue\/.+/]` forces Vite to resolve these modules with no duplication. Otherwise VitePress will have problem as PrimeVue includes its own Vue.
+In [docs/.vitepress/config.js](docs/.vitepress/config.js), `vite.resolve.dedupe: ['vue', /primevue\/.+/]` forces Vite to resolve these modules with no duplication, otherwise VitePress will report error at runtime as PrimeVue also has Vue in its dependency.
