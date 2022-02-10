@@ -1,16 +1,23 @@
+<script setup>
+import Basic from './demo/ComponentB/Basic.vue'
+</script>
 # Component B
 
-This is the documentation for Component B.
+This component depends on third-party component library for Vue 3:
+
+* Component (button) from [PrimeVue](https://www.primefaces.org/primevue/)
+* CSS from [PrimeIcons](https://www.primefaces.org/showcase/icons.xhtml) and [PrimeFlex](https://www.primefaces.org/primeflex/)
 
 ## Example Usage
 
-You may show demo below with the code shown.
+Click the buttons to change the count.
 
 <DemoContainer>
-  <ComponentB-Basic/>
+  <Basic/>
 </DemoContainer>
 
-@[code](../.vuepress/components/ComponentB/Basic.vue)
+<<< @/components/demo/ComponentB/Basic.vue
+
 ## Reference
 You may show props, slots, events, methods, etc. using Markdown.
 

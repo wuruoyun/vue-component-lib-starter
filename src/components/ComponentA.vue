@@ -7,5 +7,5 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-  <div>Component A: {{ msg }}</div>
+  <div>Hello {{ msg }}!</div>
 </template>

@@ -2,11 +2,11 @@
 
 # Vue Component Library Starter
 
-> Create your own [Vue 3](https://v3.vuejs.org/) component library with TypeScript, [Vite](https://vitejs.dev) and [VuePress 2](https://v2.vuepress.vuejs.org).
+> Create your own [Vue 3](https://v3.vuejs.org/) component library with TypeScript, [Vite](https://vitejs.dev) and [VitePress](https://vitepress.vuejs.org/).
 
 Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force to you remove app specific logic from your components, making it easier to test and reuse them in other apps.
 
-Once the components are in a libraray, documentation becomes critical. This starter project includes a documentation app powered by VuePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See the generated documentation app [here](https://sharp-babbage-154f0a.netlify.com/).
+Once the components are in a library, documentation becomes critical. This starter project includes a documentation app powered by VitePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See the generated documentation app [here](https://sharp-babbage-154f0a.netlify.com/).
 
 ## Setup
 
@@ -44,6 +44,8 @@ If you made changes to the library, you will need to rebuild the library. Your V
 The library is a [Vue plugin](https://v3.vuejs.org/guide/plugins.html). The `install` function in [index.ts](src/index.ts) registers all components under [components](src/components) to Vue globably.
 
 The components are also exported by [index.ts](src/index.ts) so that the client app can import them individually and register them locally, instead of using the library as a plugin. This may be a better option if the client app only use a small set of components in your library.
+
+As there are already many UI component libraries for Vue 3, you may just want to build on top of one of them and create components for your specific needs. The Component B in this starter shows the example of using [PrimeVue](https://www.primefaces.org/primevue/) as the example.
 
 ### Utilities and constants
 
@@ -123,6 +125,16 @@ In [package.json](package.json), `"types": "./types/index.d.ts"` locates the gen
 
 The folder `types` is also included in `files` in [package.json](package.json), so that it will be included in npm publish.
 
-### Misc
+### Configuration
+
+#### TypeScript
 
 In [tsconfig.json](tsconfig.js), `compilerOptions.isolatedModules` is set to `true` as recommended by Vite (since esbuild is used). However, enableing this option leads to [https://github.com/vitejs/vite/issues/5814](https://github.com/vitejs/vite/issues/5814). The workaround is to also enable `compilerOptions.skipLibCheck`.
+
+#### Third-party dependencies
+
+In [package.json](package.json), Vue and PrimeVue are declared in both `peerDependencies` and `devDependencies`. The former requires the client app to add these dependencies, and the later makes it easier to setup this library by simple `npm install`.
+
+In [vite.config.ts](vite.config.ts), `build.rollupOptions.external: ['vue', /primevue\/.+/]` ensures the codes from Vue and PrimeVue are excluded from the library build artifact. You shall do the same for the dependencies of your library.
+
+In [docs/.vitepress/config.js](docs/.vitepress/config.js), `vite.resolve.dedupe: ['vue', /primevue\/.+/]` forces Vite to resolve these modules with no duplication. Otherwise VitePress will have problem as PrimeVue includes its own Vue.

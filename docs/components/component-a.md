@@ -1,16 +1,21 @@
+<script setup>
+import Basic from './demo/ComponentA/Basic.vue'
+</script>
+
 # Component A
 
-This is the documentation for Component A.
+This is a simple Hello Word component with a prop.
 
 ## Example Usage
 
-You may show demo below with the code shown.
+You may show demo below with the code snippet.
 
 <DemoContainer>
-  <ComponentA-Basic/>
+  <Basic/>
 </DemoContainer>
 
-@[code](../.vuepress/components/ComponentA/Basic.vue)
+<<< @/components/demo/ComponentA/Basic.vue
+
 ## Reference
 You may show props, slots, events, methods, etc. using Markdown.
 ### Properties
