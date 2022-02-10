@@ -53,6 +53,18 @@ The components are also exported by [index.ts](src/index.ts) so that the client 
 
 As there are already many UI component libraries for Vue 3, you may just want to build on top of one of them and create components for your specific needs. The Component B in this starter shows the example of using [PrimeVue](https://www.primefaces.org/primevue/) as the fundation library. However, this means the client app shall also use the same fundation component library as your library does.
 
+The doc app itself is a client app of the libary, therefore PrimeVue is imported in [docs/.vitepress/theme/index.js](docs/.vitepress/theme/index.js). The configuration in [docs/.vitepress/config.js](docs/.vitepress/config.js) below forces VitePress to resolve these modules with no duplication, avoiding error at runtime, as PrimeVue also has Vue in its dependency.
+
+```js
+module.exports = {
+  vite: {
+    resolve: {
+      dedupe: ['vue', /primevue\/.+/],
+    },
+  },
+};
+```
+
 ### Utilities and constants
 
 The library includes example utilities and constants. They are also exported in [index.ts](src/index.ts). The client app may use them as below:
@@ -137,8 +149,6 @@ The folder `types` is also included in `files` in [package.json](package.json), 
 
 In [tsconfig.json](tsconfig.js), `compilerOptions.isolatedModules` is set to `true` as recommended by Vite (since esbuild is used). However, enableing this option leads to [https://github.com/vitejs/vite/issues/5814](https://github.com/vitejs/vite/issues/5814). The workaround is to also enable `compilerOptions.skipLibCheck`.
 
-#### Third-party dependencies
+#### Dependencies
 
 In [package.json](package.json), Vue and PrimeVue are declared in both `peerDependencies` and `devDependencies`. The former requires the client app to add these dependencies, and the later makes it easier to setup this library by simply running `npm install`.
-
-In [docs/.vitepress/config.js](docs/.vitepress/config.js), `vite.resolve.dedupe: ['vue', /primevue\/.+/]` forces Vite to resolve these modules with no duplication, otherwise VitePress will report error at runtime as PrimeVue also has Vue in its dependency.
