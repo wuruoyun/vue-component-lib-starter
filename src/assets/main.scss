@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'myfont';
+  src: url('fonts/myfont.woff');
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+  font-family: 'myfont' !important;
+}
+
+.icon-heart:before {
+  content: '\e9da';
+}
+
 .global-example {
   color: red;
 }

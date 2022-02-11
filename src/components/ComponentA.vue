@@ -7,5 +7,7 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-  <div>Hello {{ msg }}!</div>
+  <div>
+    Hello {{ msg }}! <span class="icon-heart" style="color:tomato"></span>
+  </div>
 </template>

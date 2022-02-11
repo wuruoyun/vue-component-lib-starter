@@ -4,7 +4,7 @@ import Basic from './demo/ComponentA/Basic.vue'
 
 # Component A
 
-This is a simple Hello Word component with a prop.
+This is a simple Hello Word component with a prop and use icon <span class="icon-heart" style="color:tomato"></span> from a font file.
 
 ## Example Usage
 
@@ -17,21 +17,23 @@ You may show demo below with the code snippet.
 <<< @/components/demo/ComponentA/Basic.vue
 
 ## Reference
+
 You may show props, slots, events, methods, etc. using Markdown.
+
 ### Properties
 
-| Name        | Type     | Default  | Description     |
-| ----------- | -------- | -------- | --------------- |
-| msg         | string   | null     | Messge to show  |
+| Name | Type   | Default | Description    |
+| ---- | ------ | ------- | -------------- |
+| msg  | string | null    | Messge to show |
 
 ### Events
 
-| Name        | Parameters   | Description     |
-| ----------- | ----------   | --------------- |
-|             |              |                 |
+| Name | Parameters | Description |
+| ---- | ---------- | ----------- |
+|      |            |             |
 
 ### Slots
 
-| Name        | Parameters   | Description     |
-| ----------- | ----------   | --------------- |
-|             |              |                 |
+| Name | Parameters | Description |
+| ---- | ---------- | ----------- |
+|      |            |             |

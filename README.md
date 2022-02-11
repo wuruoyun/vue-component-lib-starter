@@ -92,9 +92,11 @@ export default {
 
 Individual compopnent may have styles defined in its `.vue` file. They will be processed, combined and minified into `dist/style.css`, which is included in the `exports` list in [package.json](package.json).
 
-If you have library level styles shared by all components in the library, you may add them to `assets/main.scss`. This file is imported in [index.ts](src/index.ts), therefore the processed styles are also included into `dist/style.css`. To avoid conflicting with other global styles, consider pre-fixing the class names or wrapping them into a namespace class.
+If you have library level styles shared by all components in the library, you may add them to [src/assets/main.scss](src/assets/main.scss). This file is imported in [index.ts](src/index.ts), therefore the processed styles are also included into `dist/style.css`. To avoid conflicting with other global styles, consider pre-fixing the class names or wrapping them into a namespace class.
 
-The client app shall import `my-lib/style.css`, usually in the entry file:
+If you have your own special set of SVG icons, you may create a font file (`.woff` format) using tools like [Icomoon](https://icomoon.io/) or [Fontello](https://fontello.com/). This starter includes an example font file [src/assets/fonts/myfont.woff](src/assets/fonts/myfont.woff) and references it in [src/assets/main.scss](src/assets/main.scss), with utility icon CSS classes. An icon from the font file is used in Component A. Vite will include the font file into the build, see [https://vitejs.dev/guide/assets.html](https://vitejs.dev/guide/assets.html).
+
+The client app shall import `style.css`, usually in the entry file:
 
 ```js
 import 'my-lib/dist/style.css';
