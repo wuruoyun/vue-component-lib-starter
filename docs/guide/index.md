@@ -6,7 +6,7 @@ You may add the usage of the library here.
 
 ## Setup
 
-This setup assumes your client app is created with Vite and vue-ts template.
+This setup assumes your client app is created with Vite and vue-ts template, and you use 'npm link' to link to `my-lib` locally.
 
 In your `package.json`, you shall have the dependencies compatible with the following:
 
