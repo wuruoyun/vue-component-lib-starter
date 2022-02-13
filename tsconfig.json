@@ -11,9 +11,10 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "declaration": true,
-    "declarationDir": "./types",
+    "emitDeclarationOnly": true,
+    "declarationDir": "./dist/types",
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/index.js"]
 }
