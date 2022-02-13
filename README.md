@@ -139,7 +139,7 @@ Finally, if your client app also use `lodash` and you don't want `lodash` to be 
 
 ### Type generation
 
-In [tsconfig.json](tsconfig.json), the following options are set to instruct `tsc` emit declaration (`.d.ts`) only, wihtout `.js` output as `vite build` handles the `.js` generation. The generated `.d.ts` files are sent to `dist/types` folder.
+In [tsconfig.json](tsconfig.json), the following options instructs `tsc` to emit declaration (`.d.ts` files) only, as `vite build` handles the `.js` file generation. The generated `.d.ts` files are sent to `dist/types` folder.
 
 ```json
   "compilerOptions": {
