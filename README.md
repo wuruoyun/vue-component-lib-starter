@@ -65,6 +65,8 @@ module.exports = {
 };
 ```
 
+> In [vite.config.ts](vite.config.ts), format 'umd' is not present in `build.lib.formats` option. This is because the PrimeVue components used by this library are externalized, and therefore requiring corresponding options in `rollupOptions.output.globals`. To avoid adding global varaibles for PrimeVue components, 'umd' is removed for simplicity.
+
 ### Utilities and constants
 
 The library includes example utilities and constants. They are also exported in [index.ts](src/index.ts). The client app may use them as below:
