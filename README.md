@@ -10,6 +10,8 @@ Once the components are in a library, documentation becomes critical. This start
 
 ## Setup
 
+> When running `docs:dev` for the first time, you may encounter error like `vitepress data not properly injected in app` in your browser. Restart the server and reload the browser. Please refer to [issue #30](https://github.com/wuruoyun/vue-component-lib-starter/issues/30) for more details.
+
 ```bash
 # install dependencies
 npm install
