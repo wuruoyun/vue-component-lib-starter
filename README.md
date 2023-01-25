@@ -29,7 +29,7 @@ npm run docs:build
 npm run docs:serve
 ```
 
-You may use [Netlify](https://www.netlify.com/) to auto build and deloy the doc app like this project does.
+You may use [Netlify](https://www.netlify.com/) to auto build and deploy the doc app like this project does.
 
 ## Develop and test locally
 
@@ -94,7 +94,7 @@ export default {
 
 ### Styling
 
-Individual compopnent may have styles defined in its `.vue` file. They will be processed, combined and minified into `dist/style.css`, which is included in the `exports` list in [package.json](package.json).
+Individual components may have styles defined in its `.vue` file. They will be processed, combined and minified into `dist/style.css`, which is included in the `exports` list in [package.json](package.json).
 
 If you have library level styles shared by all components in the library, you may add them to [src/assets/main.scss](src/assets/main.scss). This file is imported in [index.ts](src/index.ts), therefore the processed styles are also included into `dist/style.css`. To avoid conflicting with other global styles, consider pre-fixing the class names or wrapping them into a namespace class.
 
