@@ -38,5 +38,9 @@
       "import": "./dist/my-lib.es.js"
     },
     "./dist/style.css": "./dist/style.css"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuruoyun/vue-component-lib-starter.git"
+  },
 }
