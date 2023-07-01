@@ -182,7 +182,3 @@ In [tsconfig.json](tsconfig.js), set the following to address [Issue #32](https:
   ]
 }
 ```
-
-#### Dependencies
-
-In [package.json](package.json), Vue and PrimeVue are declared in both `peerDependencies` and `devDependencies`. The former requires the client app to add these dependencies, and the later makes it easier to setup this library by simply running `npm install`.
