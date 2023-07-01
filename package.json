@@ -8,23 +8,19 @@
     "docs:serve": "vitepress serve docs"
   },
   "peerDependencies": {
-    "primeflex": "^3.1.2",
-    "primeicons": "^5.0.0",
-    "primevue": "^3.11.1",
-    "vue": "^3.2.25"
+    "primeflex": "^3.3.1",
+    "primeicons": "^6.0.1",
+    "primevue": "^3.29.2",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@types/node": "^20.3.3",
     "@vitejs/plugin-vue": "^4.2.3",
-    "primeflex": "^3.3.1",
-    "primeicons": "^6.0.1",
-    "primevue": "^3.29.2",
     "rimraf": "^5.0.1",
     "sass": "^1.63.6",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vitepress": "^0.22.4",
-    "vue": "^3.3.4",
     "vue-tsc": "^1.8.3"
   },
   "files": [
