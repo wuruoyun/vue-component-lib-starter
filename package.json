@@ -27,10 +27,10 @@
     "src",
     "dist"
   ],
-  "types": "./dist/types/index.d.ts",
   "module": "./dist/my-lib.es.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/my-lib.es.js"
     },
     "./dist/style.css": "./dist/style.css"
@@ -38,5 +38,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wuruoyun/vue-component-lib-starter.git"
-  },
+  }
 }
